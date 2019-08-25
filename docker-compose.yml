@@ -1,0 +1,44 @@
+version: '3'
+services:
+  back:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: back
+    ports:
+      - "3000:3000"
+    working_dir: /app
+    command: yarn run start
+    volumes:
+      - ./server/:/app
+    networks:
+      - app-network
+
+  front:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: front-node
+    ports:
+      - "8000:8000"
+    working_dir: /app
+    command: yarn serve
+    volumes:
+      - ./client/:/app
+    networks:
+      - app-network
+
+  cliente:
+    image: nginx:alpine
+    container_name: client
+    ports:
+      - "80:80"
+    volumes:
+      - ./client/:/app/client/
+      - ./docker/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
