@@ -74,42 +74,42 @@ export default {
 
   },
   methods:{
-    zera() {
+    zera () {
       this.test = [
         {
           'id':'01',
           'versa': 'logo.png',
-          'position':true
+          'position': true
         },
         {
           'id':'02',
           'versa': 'logo.png',
-          'position':true
+          'position': true
         },
         {
           'id':'03',
           'versa': 'logo.png',
-          'position':true
+          'position': true
         },
         {
           'id':'04',
           'versa': 'logo.png',
-          'position':true
+          'position': true
         },
         {
           'id':'01',
           'versa': 'logo.png',
-          'position':true
+          'position': true
         },
         {
           'id':'02',
           'versa': 'logo.png',
-          'position':true
+          'position': true
         },
         {
           'id':'03',
           'versa': 'logo.png',
-          'position':true
+          'position': true
         },
         {
           'id':'04',
@@ -118,32 +118,32 @@ export default {
         },
       ]
     },
-    validOption(item, index){
-      if(item.position){
+    validOption (item, index) {
+      if(item.position) {
         item.position = false
 
-        if(this.tentativa1 === ''){
+        if (this.tentativa1 === '') {
           this.tentativa1 = item
           this.tentativa1.index = index
-          return;
-        }else{
+          return
+        } else {
           this.tentativa2 = item
           this.tentativa2.index = index
         }
 
-        if (this.tentativa1 != '' && this.tentativa2 != ''){
-          if (this.tentativa1.id === this.tentativa2.id){
+        if (this.tentativa1 != '' && this.tentativa2 != '') {
+          if (this.tentativa1.id === this.tentativa2.id) {
             this.tentativa2 = ""
             this.tentativa1 = ""
-            return;
+            return
           }
           setTimeout(() => {
             this.test[this.tentativa1.index].position = true
             this.test[this.tentativa2.index].position = true
-            this.tentativa1 = ""
-            this.tentativa2 = ""
-            return;
-          },300);
+            this.tentativa1 = ''
+            this.tentativa2 = ''
+            return
+          },300)
         }
 
       }
